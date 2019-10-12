@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
 
     def log_in(user)
         session[:user_id]  = user.id
+        user.create_remember_token
+        remember(user)
     end
 
     def log_out
